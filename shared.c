@@ -19,65 +19,39 @@ int isPrime(unsigned int num)
     return 1;
 }
 
-int randomInt(int seed)
-{
-    if (!seed)
-    {
-        seed = time(0);
-    }
-    srand(seed);
-    int randomNumber = rand() % 900000 + 100000;
-    return randomNumber;
-}
 
-int Task1(int seed)
+int Task1(void *data)
 {
-    int num = randomInt(seed);
-    return num;
+    usleep(1000);
+    return rand() % 900000 + 100000;
 }
-
-int Task2(int num)
+int Task2(void *data)
 {
-    printf("%d\n", num);
-    if (isPrime(num))
-    {
+    int number = (int)data;
+    printf("%d\n",number);
+    if(isPrime(number))
         printf("true\n");
-    }
     else
-    {
         printf("false\n");
-    }
-    num += 11;
-    return num;
+    return number+11;
 }
-
-int Task3(int num)
+int Task3(void *data)
 {
-    printf("%d\n", num);
-    if (isPrime(num))
-    {
+    int number = (int)data;
+    printf("%d\n",number);
+
+    if(isPrime(number))
         printf("true\n");
-    }
     else
-    {
         printf("false\n");
-    }
-    num -= 13;
-    return num;
+    return number-13;
 }
-
-int Task4(int num)
+int Task4(void *data)
 {
-    printf("%d\n", num);
-    if (isPrime(num))
-    {
-        printf("true\n");
-    }
-    else
-    {
-        printf("false\n");
-    }
-    num += 2;
-    printf("%d\n", num);
-    return num;
+    int number = (int)data;
+    printf("%d\n",number);
+    number+=2;
+    printf("%d\n",number);
+
+    return 0;
 }

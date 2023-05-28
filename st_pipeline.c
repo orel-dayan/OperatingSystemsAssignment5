@@ -22,28 +22,25 @@ int main(int argc, char *argv[])
     }
 
     srand(seed);
+	pActiveObject pactiveobject4 = CreateActiveObject(Task4, NULL, N);
+	pActiveObject pactiveobject3 = CreateActiveObject(Task3, pactiveobject4, N);
+	pActiveObject pactiveobject2 = CreateActiveObject(Task2, pactiveobject3, N);
+	pActiveObject pactiveobject1 = CreateActiveObject(Task1, pactiveobject2, N);
 
+	while(1)
+	{
+		sleep(1);
+		if(!pactiveobject1->n && !pactiveobject2->n && !pactiveobject3->n && !pactiveobject4->n)
+		{
+			stop(pactiveobject1);
+			stop(pactiveobject2);
+			stop(pactiveobject3);
+			stop(pactiveobject4);
+			break;
+		}
 
-    pActiveObject p1 = CreateActiveObject(Task1, N);
-    pActiveObject p2 = CreateActiveObject(Task2, N);
-    pActiveObject p3 = CreateActiveObject(Task3, N);
-    pActiveObject p4 = CreateActiveObject(Task4, N);
+	}
 
+	return 0;
 
-    p1->next = p2;
-    p2->next = p3;
-    p3->next = p4;
-    while (1)
-    {
-        sleep(1);
-        if (!p1->n && !p2->n && !p3->n && !p4->n && isEmpty(p1->queue) && isEmpty(p2->queue) && isEmpty(p3->queue) && isEmpty(p4->queue))
-        {
-            stop(p1);
-            stop(p2);
-            stop(p3);
-            stop(p4);
-            break;
-        }
-    }
-    return 0;
 }

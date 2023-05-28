@@ -11,7 +11,7 @@ typedef struct _ActiveObject
 	size_t n;
 } ActiveObject, *pActiveObject;
 
-pActiveObject CreateActiveObject(void(func)(void *), size_t n);
+pActiveObject CreateActiveObject(void(func)(void *), pActiveObject next, size_t N);
 
 pQueue getQueue(pActiveObject this);
 

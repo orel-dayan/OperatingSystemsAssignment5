@@ -27,7 +27,7 @@ void *run(void *this)
 	return NULL;
 }
 
-pActiveObject CreateActiveObject(void(func)(void *), size_t n)
+pActiveObject CreateActiveObject(void(func)(void *), pActiveObject next, size_t n)
 {
 	pActiveObject pactiveobject = (pActiveObject)malloc(sizeof(ActiveObject));
 
@@ -48,7 +48,7 @@ pActiveObject CreateActiveObject(void(func)(void *), size_t n)
 
 	pactiveobject->func = func;
 	pactiveobject->n = n;
-	pactiveobject->next = NULL;
+	pactiveobject->next = next;
 	pactiveobject->thread = (pthread_t *)calloc(1, sizeof(pthread_t));
 	if (pactiveobject->thread == NULL) // if the calloc failed
 	{

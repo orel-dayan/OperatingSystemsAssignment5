@@ -1,5 +1,5 @@
 CC = gcc
-FLAGS = -Wall -g
+FLAGS = -Wall -g -w
 OBJECTS = shared.c ActiveObject.c Queue.c st_pipeline.c
 HEADERS = ActiveObject.h Queue.h shared.h
 

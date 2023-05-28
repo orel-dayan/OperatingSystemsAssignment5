@@ -8,8 +8,7 @@
 
 
 int isPrime(unsigned int);
-int randomInt(int);
-int Task1(int);
-int Task2(int);
-int Task3(int);
-int Task4(int);
+int Task1(void*);
+int Task2(void*);
+int Task3(void*);
+int Task4(void*);
