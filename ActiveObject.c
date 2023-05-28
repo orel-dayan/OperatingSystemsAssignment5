@@ -78,7 +78,7 @@ void stop(pActiveObject pactiveobject)
 {
 
 	pthread_cancel(*pactiveobject->thread); // cancel the thread
-	//pthread_join(*pactiveobject->thread, NULL); // wait for the thread to finish
-	destoryQ(pactiveobject->queue);			// free the queue
-	free(pactiveobject);					// free the active object
+	// pthread_join(*pactiveobject->thread, NULL); // wait for the thread to finish
+	destoryQ(pactiveobject->queue); // free the queue
+	free(pactiveobject);			// free the active object
 }

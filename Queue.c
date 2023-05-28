@@ -13,7 +13,7 @@ pQueue createQ()
 	newQueue->tail = NULL;
 	pthread_cond_init(&newQueue->condition_var, NULL);
 	pthread_mutex_init(&newQueue->queue_mutex, NULL);
-	
+
 	return newQueue;
 }
 
