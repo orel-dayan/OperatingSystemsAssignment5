@@ -25,7 +25,7 @@ int randomInt(int seed)
     {
         seed = time(0);
     }
-    srand(seed);                               
+    srand(seed);
     int randomNumber = rand() % 900000 + 100000;
     return randomNumber;
 }
