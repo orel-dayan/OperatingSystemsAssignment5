@@ -1,30 +1,53 @@
 #pragma once
 
-#include <stdio.h>
-#include <stdlib.h>
 #include <pthread.h>
+#include <stdlib.h>
+#include <stdio.h>
 
-typedef struct _Node
-{
-	void *element;
-	struct _Node *next;
-} Node, *pNode;
+/**
+ * @brief Node structure for the queue.
+ * value: Pointer to the value of the node.
+ * next: Pointer to the next node.
+ */
 
-typedef struct _Queue
+typedef struct Node
 {
-	pNode head;
-	pNode tail;
-	size_t size;
-	pthread_cond_t condition_var;
+	void *value;
+	struct Node *next;
+} Node;
+
+/**
+ * @brief Queue structure for the active object.
+ * head: Pointer to the head of the queue.
+ * tail: Pointer to the tail of the queue.
+ * queue_mutex: Mutex for the queue.
+ * condition_var: Condition variable for the queue.
+ *
+ */
+
+typedef struct Queue
+{
+	Node *head, *tail;
 	pthread_mutex_t queue_mutex;
-} Queue, *pQueue;
+	pthread_cond_t condition_var;
+} Queue;
 
-pQueue createQ();
+/**
+ * @brief Create a queue object and return a pointer to it.
+ *
+ * @return Queue* Pointer to the created queue.
+ */
+Queue *createQ();
 
-int isEmpty(pQueue queue);
+/**
+ * @brief  Add an item to the queue.
+ *
+ */
+void enQ(Queue *, void *);
 
-void enQ(pQueue queue, void *data);
-
-void *deQ(pQueue queue);
-
-void destoryQ(pQueue queue);
+/**
+ * @brief Remove an item from the queue.
+ *
+ * @return void*
+ */
+void *deQ(Queue *);

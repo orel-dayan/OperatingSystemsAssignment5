@@ -1,12 +1,22 @@
 CC = gcc
-FLAGS = -Wall -g -w
-OBJECTS = shared.c ActiveObject.c Queue.c st_pipeline.c
-HEADERS = ActiveObject.h Queue.h shared.h
+CFLAGS = -pthread
 
-all:st_pipeline
+all: st_pipeline
 
-st_pipeline: $(OBJECTS) $(HEADERS)
-	$(CC) $(FLAGS) -o st_pipeline $(OBJECTS)
+st_pipeline: Math.o Queue.o ActiveObject.o st_pipeline.o
+	$(CC) $(CFLAGS) -o st_pipeline Math.o Queue.o ActiveObject.o st_pipeline.o -lm
+
+Math.o: Math.c Math.h
+	$(CC) $(CFLAGS) -c Math.c
+
+Queue.o: Queue.c Queue.h
+	$(CC) $(CFLAGS) -c Queue.c
+
+ActiveObject.o: ActiveObject.c ActiveObject.h Queue.h
+	$(CC) $(CFLAGS) -c ActiveObject.c
+
+st_pipeline.o: st_pipeline.c ActiveObject.h Queue.h Math.h
+	$(CC) $(CFLAGS) -c st_pipeline.c
 
 clean:
-	rm st_pipeline
+	rm *.o st_pipeline

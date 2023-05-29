@@ -1,84 +1,42 @@
 #include "ActiveObject.h"
-#include "shared.h"
 
-void *run(void *this)
+ActiveObject *CreateActiveObject(void (*func)(void *, ActiveObject *))
 {
-
-	pActiveObject pactiveobject = (pActiveObject)this;
-	void *data;	  // the data that we will send to the function
-	int res;	  // the result of the function
-	int flag = 0; // flag to check if we done check all the data
-	while (!flag) // while we didn't check all the data
+	ActiveObject *activeobject = (ActiveObject *)malloc(sizeof(ActiveObject)); // Allocate memory for the active object
+	if (activeobject == NULL)
 	{
-		if (pactiveobject->func != Task1)	  // if the function is not Task1
-			data = deQ(pactiveobject->queue); // get the data from the queue
-
-		if (pactiveobject->func != NULL) // if the function is not NULL
-		{
-			res = pactiveobject->func(data);
-			if (pactiveobject->next)
-				enQ(pactiveobject->next->queue, (void *)res);
-		}
-		pactiveobject->n--; // decrease the number of data that we need to check
-
-		if (0 == pactiveobject->n) // if we done check all the data
-			flag = 1;
+		printf("Error allocating memory\n");
+		exit(1);
 	}
-	return NULL;
+	activeobject->queue = createQ(); // Create a queue for the active object
+	activeobject->next = NULL;		 // Set the next active object to NULL
+	activeobject->func = func;		 // Set the function pointer to the function passed as an argument
+	if (pthread_create(&activeobject->thread, NULL, (void *(*)(void *))run, (void *)activeobject) != 0)
+	{
+		printf("Error creating thread\n");
+	}
+
+	return activeobject;
 }
 
-pActiveObject CreateActiveObject(void(func)(void *), pActiveObject next, size_t n)
+void run(ActiveObject *this)
 {
-	pActiveObject pactiveobject = (pActiveObject)malloc(sizeof(ActiveObject));
-
-	if (pactiveobject == NULL)
+	void *task;								  // Task to be executed
+	while ((task = deQ(this->queue)) != NULL) // Dequeue a task from the queue
 	{
-		printf("malloc failed\n");
-		exit(EXIT_FAILURE);
+		this->func(task, this->next);
+		free(task); // Free the memory allocated for the task
 	}
-
-	pactiveobject->queue = createQ();
-
-	if (pactiveobject->queue == NULL)
-	{
-		printf("Error creating queue\n");
-		free(pactiveobject);
-		exit(EXIT_FAILURE);
-	}
-
-	pactiveobject->func = func;
-	pactiveobject->n = n;
-	pactiveobject->next = next;
-	pactiveobject->thread = (pthread_t *)calloc(1, sizeof(pthread_t));
-	if (pactiveobject->thread == NULL) // if the calloc failed
-	{
-		printf("calloc failed\n");
-		destoryQ(pactiveobject->queue);
-		free(pactiveobject);
-		exit(EXIT_FAILURE);
-	}
-	if (pthread_create(pactiveobject->thread, NULL, run, pactiveobject) != 0) // if the pthread_create failed
-	{
-		printf("pthread_create failed\n");
-		// destoryQ(pactiveobject->queue);
-		// free(pactiveobject->thread);
-		// free(pactiveobject);
-		// exit(EXIT_FAILURE);
-	}
-
-	return pactiveobject;
 }
 
-pQueue getQueue(pActiveObject pactiveobject)
+Queue *getQueue(ActiveObject *this)
 {
-	return pactiveobject->queue;
+	return this->queue;
 }
 
-void stop(pActiveObject pactiveobject)
+void stop(ActiveObject *this)
 {
-
-	pthread_cancel(*pactiveobject->thread); // cancel the thread
-	// pthread_join(*pactiveobject->thread, NULL); // wait for the thread to finish
-	destoryQ(pactiveobject->queue); // free the queue
-	free(pactiveobject);			// free the active object
+	pthread_cancel(this->thread); // Cancel the thread
+	free(this->queue);			  // Free the memory allocated for the queue
+	free(this);					  // Free the memory allocated for the active object
 }

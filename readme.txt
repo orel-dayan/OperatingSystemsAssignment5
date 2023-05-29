@@ -27,4 +27,6 @@ University assignment 5 for Operating System course in Ariel University.
 
 - https://rosettacode.org/wiki/Active_object
 
+- https://stackoverflow.com/questions/44175151/what-is-the-meaning-of-lm-in-gcc
+
 

@@ -1,87 +1,57 @@
 #include "Queue.h"
 
-pQueue createQ()
+Queue *createQ()
 {
-	pQueue newQueue = (pQueue)malloc(sizeof(Queue));
-	if (newQueue == NULL)
+	Queue *newQ = (Queue *)malloc(sizeof(Queue)); // Allocate memory for the queue
+	if (newQ == NULL)
 	{
-		printf("malloc failed\n");
-		return NULL;
+		printf("Error allocating memory\n");
+		exit(1);
 	}
-	newQueue->size = 0;
-	newQueue->head = NULL;
-	newQueue->tail = NULL;
-	pthread_cond_init(&newQueue->condition_var, NULL);
-	pthread_mutex_init(&newQueue->queue_mutex, NULL);
-
-	return newQueue;
+	newQ->head = newQ->tail = NULL;				   // Initialize the head and tail to NULL
+	pthread_mutex_init(&newQ->queue_mutex, NULL);  // Initialize the mutex
+	pthread_cond_init(&newQ->condition_var, NULL); // Initialize the condition variable
+	return newQ;								   // Return the pointer to the queue
 }
 
-void enQ(pQueue queue, void *data)
+void enQ(Queue *queue, void *value)
 {
-	pthread_mutex_lock(&queue->queue_mutex);
-	pNode tmp = (pNode)malloc(sizeof(Node));
-	if (tmp == NULL)
-	{
-		printf("malloc failed\n");
-		exit(EXIT_FAILURE);
-	}
-	tmp->element = data;
+	Node *tmp = (Node *)malloc(sizeof(Node));
+	tmp->value = value;
 	tmp->next = NULL;
-
-	if (queue->size == 0) // if the queue is empty
+	pthread_mutex_lock(&queue->queue_mutex);
+	if (queue->tail == NULL) // Queue is empty
 	{
-		queue->head = tmp; // the head and the tail are the new node
-		queue->tail = tmp; // the head and the tail are the new node
+		queue->head = queue->tail = tmp;			// Set head and tail to the new node
+		pthread_cond_signal(&queue->condition_var); // Signal the condition variable to wake up a thread waiting on it
 	}
-	else // if the queue is not empty
+	else // Queue is not empty
 	{
 		queue->tail->next = tmp;
 		queue->tail = tmp;
 	}
-	queue->size++;
-
-	pthread_cond_signal(&queue->condition_var); // signal that the queue is not empty
-	pthread_mutex_unlock(&queue->queue_mutex);	// unlock the mutex
+	pthread_mutex_unlock(&queue->queue_mutex); // Unlock the mutex to allow other threads to access the queue
 }
 
-void *deQ(pQueue queue)
+void *deQ(Queue *queue)
 {
-	pthread_mutex_lock(&queue->queue_mutex); // lock the mutex
-	while (isEmpty(queue))					 // if the queue is empty - wait for someone to signal the queue is not empty
-	{
-		// wait for someone to signal the queue is not empty
-		pthread_cond_wait(&queue->condition_var, &queue->queue_mutex);
+	pthread_mutex_lock(&queue->queue_mutex); // Lock the mutex to allow only one thread to access the queue
+
+	while (queue->head == NULL)
+	{																   // Queue is empty
+		pthread_cond_wait(&queue->condition_var, &queue->queue_mutex); // wait for someone to signal the queue is not empty
 	}
-	pNode tmp = queue->head; // the node we want to delete
-	queue->head = tmp->next;
-	void *element = tmp->element;
-	free(tmp);
-	queue->size--; // decrease the size of the queue
+	Node *tmp = queue->head; // the node to be removed
+	void *value = tmp->value;
+	queue->head = queue->head->next;
 
-	pthread_mutex_unlock(&queue->queue_mutex); // unlock the mutex
-	return element;
-}
-
-void destoryQ(pQueue queue)
-{
-
-	pthread_mutex_lock(&queue->queue_mutex);
-	pNode tmp; // temp node
-	while (queue->head != NULL)
-	{
-		tmp = queue->head;
-		queue->head = tmp->next;
-		free(tmp->element);
-		free(tmp);
+	if (queue->head == NULL)
+	{						// Queue is empty
+		queue->tail = NULL; // Set tail to NULL
 	}
-	pthread_cond_destroy(&queue->condition_var); // destroy the condition variable
-	pthread_mutex_destroy(&queue->queue_mutex);	 // destroy the mutex
-	pthread_mutex_unlock(&queue->queue_mutex);	 // unlock the mutex
-	free(queue);								 // free the queue
-}
+	pthread_mutex_unlock(&queue->queue_mutex); // Unlock the mutex to allow other threads to access the queue
 
-int isEmpty(pQueue queue)
-{
-	return queue->size == 0; // return 1 if the queue is empty
+	free(tmp); // Free the memory allocated for the node
+
+	return value;
 }

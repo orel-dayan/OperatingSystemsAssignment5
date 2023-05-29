@@ -2,6 +2,9 @@
 
 University assignment 5 for Operating System course in Ariel University.
 
+#### **__For more information, you can see in the PDF in the docs directory__**
+
+
 
 ## **Requirements**
 - Ubuntu 22.04 LTS
@@ -21,10 +24,5 @@ University assignment 5 for Operating System course in Ariel University.
 - Orel Dayan
 - Evaytar yosef
 
-## **Links:**
-
-- https://jyos-sw.medium.com/blocking-queues-implementation-in-c-7ee9f9e84307
-
-- https://rosettacode.org/wiki/Active_object
 
 
