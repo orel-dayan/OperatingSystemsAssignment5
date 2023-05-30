@@ -10,8 +10,10 @@ int main(int argc, char *argv[])
 
 	srand((argc > 2) ? atoi(argv[2]) : time(NULL)); // seed the random number generator
 
-	int n = (argc > 1) ? atoi(argv[1]) : 10; // number of tasks to be executed
+	int N = (argc > 1) ? atoi(argv[1]) : 10; // number of tasks to be executed
+	//defualt value is 10 if no argument is passed
 
+	// Create the active objects
 	ActiveObject *active_object1 = CreateActiveObject(Task2);
 	ActiveObject *active_object2 = CreateActiveObject(Task3);
 	ActiveObject *active_object3 = CreateActiveObject(Task4);
@@ -19,15 +21,15 @@ int main(int argc, char *argv[])
 	active_object1->next = active_object2;
 	active_object2->next = active_object3;
 
-	for (int i = 0; i < n; i++)
+	for (int i = 0; i < N; i++)
 	{
 		unsigned int *num = (unsigned int *)malloc(sizeof(unsigned int));
 		*num = rand() % 900000 + 100000; // generate a random number between 100000 and 999999
 
 		enQ(getQueue(active_object1), num); // enqueue the number to the first queue
-		sleep(1);
+		sleep(1); // sleep for 1 second
 	}
-	sleep(2);
+	sleep(2); // sleep for 2 seconds
 	stop(active_object1); // stop the active objects
 	stop(active_object2);
 	stop(active_object3);

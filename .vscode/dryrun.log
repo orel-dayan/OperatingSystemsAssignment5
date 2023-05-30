@@ -1,0 +1,9 @@
+make --dry-run --keep-going --print-directory
+make: Entering directory '/home/user/Documents/OperatingSystemsAssignment5'
+gcc -pthread -c Math.c
+gcc -pthread -c Queue.c
+gcc -pthread -c ActiveObject.c
+gcc -pthread -c st_pipeline.c
+gcc -pthread -o st_pipeline Math.o Queue.o ActiveObject.o st_pipeline.o -lm 
+make: Leaving directory '/home/user/Documents/OperatingSystemsAssignment5'
+ 

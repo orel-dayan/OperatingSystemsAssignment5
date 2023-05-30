@@ -4,7 +4,7 @@ CFLAGS = -pthread
 all: st_pipeline
 
 st_pipeline: Math.o Queue.o ActiveObject.o st_pipeline.o
-	$(CC) $(CFLAGS) -o st_pipeline Math.o Queue.o ActiveObject.o st_pipeline.o -lm
+	$(CC) $(CFLAGS) -o st_pipeline Math.o Queue.o ActiveObject.o st_pipeline.o -lm 
 
 Math.o: Math.c Math.h
 	$(CC) $(CFLAGS) -c Math.c
