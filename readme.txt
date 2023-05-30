@@ -13,6 +13,9 @@ University assignment 5 for Operating System course in Ariel University.
  Each active object is independent and safe to use concurrently with the others.
  The method invocation on the active object  is decoupled from its execution by a queue which is thread-safe due to the use of mutex locks.
 
+  ### **Note**
+ - In the docs directory, you can find the PDF of the assignment and the screenshots of the program.
+
 
 
 ## **Requirements**
