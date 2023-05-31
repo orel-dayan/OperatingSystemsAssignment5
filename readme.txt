@@ -15,7 +15,7 @@ University assignment 5 for Operating System course in Ariel University.
 
   ### **Note**
  - In the docs directory, you can find the PDF of the assignment and the screenshots of the program.
-
+-  if you want less accurrate results but more rapidaly , remove the sleeep(1) in line 32 in st_pipeline.c (Arkady accept to the sleep)
 
 
 ## **Requirements**
