@@ -6,7 +6,7 @@ make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Tue May 30 17:10:46 2023
+# Make data base, printed on Wed May 31 12:39:43 2023
 
 # Variables
 
@@ -15,13 +15,9 @@ GDK_BACKEND = x11
 # environment
 LC_ALL = C
 # environment
-NO_AT_BRIDGE = 1
-# environment
 GNOME_SHELL_SESSION_MODE = ubuntu
 # environment
 SSH_AGENT_LAUNCHER = gnome-keyring
-# environment
-GJS_DEBUG_OUTPUT = stderr
 # environment
 SNAP_LAUNCHER_ARCH_TRIPLET = x86_64-linux-gnu
 # environment
@@ -61,7 +57,7 @@ VSCODE_CODE_CACHE_PATH = /home/user/.config/Code/CachedData/b3e4e68a0bc097f0ae79
 # environment
 LANG = C
 # environment
-XAUTHORITY = /run/user/1000/.mutter-Xwaylandauth.X0GY51
+XAUTHORITY = /run/user/1000/.mutter-Xwaylandauth.7NAY51
 # default
 .LOADED := 
 # default
@@ -69,13 +65,11 @@ XAUTHORITY = /run/user/1000/.mutter-Xwaylandauth.X0GY51
 # makefile
 MAKEFLAGS = pqrR
 # environment
-DBUS_STARTER_ADDRESS = unix:path=/run/user/1000/bus,guid=46c7408d374063e1e4c1af2064760153
+DBUS_STARTER_ADDRESS = unix:path=/run/user/1000/bus,guid=03683cf79ca01873a10c429d647715b1
 # makefile
 CURDIR := /home/user/Documents/OperatingSystemsAssignment5
 # environment
 APPLICATION_INSIGHTS_NO_DIAGNOSTIC_CHANNEL = 1
-# environment
-VSCODE_L10N_BUNDLE_LOCATION = 
 # automatic
 *D = $(patsubst %/,%,$(dir $*))
 # environment
@@ -97,7 +91,7 @@ MAKEFILE_LIST := Makefile
 # environment
 ZSH = /home/user/.oh-my-zsh
 # environment
-VSCODE_PID = 5044
+VSCODE_PID = 3442
 # environment
 XDG_SESSION_TYPE = wayland
 # automatic
@@ -105,13 +99,13 @@ XDG_SESSION_TYPE = wayland
 # environment
 BAMF_DESKTOP_FILE_HINT = /var/lib/snapd/desktop/applications/code_code.desktop
 # environment
-SESSION_MANAGER = local/orel-ubuntu:@/tmp/.ICE-unix/1601,unix/orel-ubuntu:/tmp/.ICE-unix/1601
+SESSION_MANAGER = local/orel-ubuntu:@/tmp/.ICE-unix/1611,unix/orel-ubuntu:/tmp/.ICE-unix/1611
 # automatic
 *F = $(notdir $*)
 # environment
 CHROME_DESKTOP = code-url-handler.desktop
 # environment
-DBUS_SESSION_BUS_ADDRESS = unix:path=/run/user/1000/bus
+DBUS_SESSION_BUS_ADDRESS = unix:path=/run/user/1000/bus,guid=03683cf79ca01873a10c429d647715b1
 # automatic
 <D = $(patsubst %/,%,$(dir $<))
 # environment
@@ -129,8 +123,6 @@ MAKECMDGOALS := all
 # environment
 XMODIFIERS = @im=ibus
 # environment
-GJS_DEBUG_TOPICS = JS ERROR;JS LOG
-# environment
 SHLVL = 0
 # environment
 MAKELEVEL := 0
@@ -139,7 +131,7 @@ MAKE = $(MAKE_COMMAND)
 # environment
 SNAP_COOKIE = W5xynm6t-Int3RaXf6LwOA4WOK8ydcwWBEc83CopKSsbiR4wobQw
 # environment
-PATH = /usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/snap/bin
+PATH = /home/user/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/snap/bin
 # default
 MAKEFILES := 
 # environment
@@ -151,7 +143,7 @@ SNAP_USER_COMMON = /home/user/snap/code/common
 # environment
 SNAP = /snap/code/129
 # environment
-INVOCATION_ID = a9bec9a5dbfc455aa2076582510a3c73
+INVOCATION_ID = 1600ded2abbb4311be1916505b7d4328
 # environment
 SNAP_REVISION = 129
 # environment
@@ -187,7 +179,7 @@ SNAP_ARCH = amd64
 # makefile
 .DEFAULT_GOAL := all
 # environment
-SYSTEMD_EXEC_PID = 1640
+SYSTEMD_EXEC_PID = 1611
 # environment
 DISPLAY = :0
 # environment
@@ -201,11 +193,11 @@ SNAP_DATA = /var/snap/code/129
 # environment
 SNAP_CONTEXT = W5xynm6t-Int3RaXf6LwOA4WOK8ydcwWBEc83CopKSsbiR4wobQw
 # environment
-MANAGERPID = 1394
+MANAGERPID = 1440
 # environment
 DBUS_STARTER_BUS_TYPE = session
 # environment
-GIO_LAUNCHED_DESKTOP_FILE_PID = 5449
+GIO_LAUNCHED_DESKTOP_FILE_PID = 3399
 # environment
 PAGER = less
 # environment
@@ -219,7 +211,7 @@ GDK_PIXBUF_MODULE_FILE = /home/user/snap/code/common/.cache/gdk-pixbuf-loaders.c
 # environment
 GIO_MODULE_DIR = /home/user/snap/code/common/.cache/gio-modules
 # environment
-JOURNAL_STREAM = 8:22465
+JOURNAL_STREAM = 8:22970
 # environment
 XDG_SESSION_CLASS = user
 # environment
@@ -267,7 +259,7 @@ GDMSESSION = ubuntu
 # environment
 SNAP_LIBRARY_PATH = /var/lib/snapd/lib/gl:/var/lib/snapd/lib/gl32:/var/lib/snapd/void
 # variable set hash-table stats:
-# Load=128/1024=12%, Rehash=0, Collisions=6/158=4%
+# Load=124/1024=12%, Rehash=0, Collisions=5/159=3%
 
 # Pattern-specific Variable Values
 
@@ -275,11 +267,10 @@ SNAP_LIBRARY_PATH = /var/lib/snapd/lib/gl:/var/lib/snapd/lib/gl32:/var/lib/snapd
 
 # Directories
 
-# . (device 2051, inode 2105169): 26 files, no impossibilities.
+# . (device 2051, inode 2105169): 20 files, no impossibilities.
 
-# 26 files, no impossibilities in 1 directories.
+# 20 files, no impossibilities in 1 directories.
 
- 
 # Implicit Rules
 
 # No implicit rules.
@@ -288,18 +279,20 @@ SNAP_LIBRARY_PATH = /var/lib/snapd/lib/gl:/var/lib/snapd/lib/gl32:/var/lib/snapd
 
 st_pipeline: Math.o Queue.o ActiveObject.o st_pipeline.o
 #  Implicit rule search has not been done.
-#  Last modified 2023-05-30 14:49:01.662717484
+ 
+#  File does not exist.
 #  File has been updated.
-#  Successfully updated.
+#  Needs to be updated (-q is set).
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/5=0%
 #  recipe to execute (from 'Makefile', line 7):
 	$(CC) $(CFLAGS) -o st_pipeline Math.o Queue.o ActiveObject.o st_pipeline.o -lm 
 
 # Not a target:
 ActiveObject.c:
-#  Implicit rule search has been done.
-#  Last modified 2023-05-29 09:34:17.386828
-#  File has been updated.
-#  Successfully updated.
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
 
 # Not a target:
 Makefile:
@@ -333,50 +326,72 @@ all: st_pipeline
 #  Implicit rule search has been done.
 #  File does not exist.
 #  File has been updated.
-#  Successfully updated.
+#  Needs to be updated (-q is set).
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/5=0%
 
 # Not a target:
 st_pipeline.c:
-#  Implicit rule search has been done.
-#  Last modified 2023-05-30 14:48:58.208083598
-#  File has been updated.
-#  Successfully updated.
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
 
 # Not a target:
 Queue.c:
-#  Implicit rule search has been done.
-#  Last modified 2023-05-29 09:34:37.415066
-#  File has been updated.
-#  Successfully updated.
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
 
 # Not a target:
 ActiveObject.h:
-#  Implicit rule search has been done.
-#  Last modified 2023-05-29 08:51:50.806974
-#  File has been updated.
-#  Successfully updated.
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
 
 Math.o: Math.c Math.h
 #  Implicit rule search has not been done.
-#  Last modified 2023-05-30 14:49:01.125888123
+#  Implicit/static pattern stem: ''
+#  File does not exist.
 #  File has been updated.
-#  Successfully updated.
+#  Needs to be updated (-q is set).
+# automatic
+# @ := Math.o
+# automatic
+# * := 
+# automatic
+# < := Math.c
+# automatic
+# + := Math.c Math.h
+# automatic
+# % := 
+# automatic
+# ^ := Math.c Math.h
+# automatic
+# ? := Math.c Math.h
+# automatic
+# | := 
+# variable set hash-table stats:
+# Load=8/32=25%, Rehash=0, Collisions=2/13=15%
 #  recipe to execute (from 'Makefile', line 10):
 	$(CC) $(CFLAGS) -c Math.c
 
+# Not a target:
+.SUFFIXES:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
 st_pipeline.o: st_pipeline.c ActiveObject.h Queue.h Math.h
 #  Implicit rule search has not been done.
-#  Last modified 2023-05-30 14:49:01.458401831
-#  File has been updated.
-#  Successfully updated.
+#  Modification time never checked.
+#  File has not been updated.
 #  recipe to execute (from 'Makefile', line 19):
 	$(CC) $(CFLAGS) -c st_pipeline.c
 
 ActiveObject.o: ActiveObject.c ActiveObject.h Queue.h
 #  Implicit rule search has not been done.
-#  Last modified 2023-05-30 14:49:01.334209964
-#  File has been updated.
-#  Successfully updated.
+#  Modification time never checked.
+#  File has not been updated.
 #  recipe to execute (from 'Makefile', line 16):
 	$(CC) $(CFLAGS) -c ActiveObject.c
 
@@ -389,33 +404,31 @@ Math.c:
 
 Queue.o: Queue.c Queue.h
 #  Implicit rule search has not been done.
-#  Last modified 2023-05-30 14:49:01.230049044
-#  File has been updated.
-#  Successfully updated.
+#  Modification time never checked.
+#  File has not been updated.
 #  recipe to execute (from 'Makefile', line 13):
 	$(CC) $(CFLAGS) -c Queue.c
 
 # Not a target:
 Queue.h:
-#  Implicit rule search has been done.
-#  Last modified 2023-05-29 08:51:19.805376
-#  File has been updated.
-#  Successfully updated.
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
 
 # files hash-table stats:
-# Load=17/1024=2%, Rehash=0, Collisions=0/49=0%
+# Load=17/1024=2%, Rehash=0, Collisions=0/50=0%
 # VPATH Search Paths
 
 # No 'vpath' search paths.
 
 # No general ('VPATH' variable) search path.
 
-# strcache buffers: 1 (0) / strings = 32 / storage = 320 B / avg = 10 B
-# current buf: size = 8162 B / used = 320 B / count = 32 / avg = 10 B
+# strcache buffers: 1 (0) / strings = 31 / storage = 316 B / avg = 10 B
+# current buf: size = 8162 B / used = 316 B / count = 31 / avg = 10 B
 
-# strcache performance: lookups = 65 / hit rate = 50%
+# strcache performance: lookups = 60 / hit rate = 48%
 # hash-table stats:
-# Load=32/8192=0%, Rehash=0, Collisions=0/65=0%
-# Finished Make data base on Tue May 30 17:10:47 2023
+# Load=31/8192=0%, Rehash=0, Collisions=0/60=0%
+# Finished Make data base on Wed May 31 12:39:43 2023
 
  

@@ -16,12 +16,10 @@ University assignment 5 for Operating System course in Ariel University.
 
  In this program, we use the Active Object Pattern to create a pipeline of active objects that generate, print, check and manipulate numbers.
  Each active object is independent and safe to use concurrently with the others.
- The method invocation on the active object  is decoupled from its execution by a queue which is thread-safe due to the use of mutex locks.
+ The method invocation on the active object is decoupled from its execution by a queue which is thread-safe due to the use of mutex locks.
 
  ### **Note**
  - In the docs directory, you can find the PDF of the assignment and the screenshots of the program.
- 
-
 
 
 ## **Requirements**
@@ -38,7 +36,7 @@ University assignment 5 for Operating System course in Ariel University.
 
 ## **Authors**
 - Orel Dayan
-- Evaytar yosef
+
 
 
 
